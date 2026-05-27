@@ -54,18 +54,29 @@ ul {
 }
 
 .hero_nav_list {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 5rem;
+  position: relative; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* ИЗМЕНЕНО: убираем боковые паддинги контейнера (было 0 1.5rem) */
+  padding: 0; 
+  gap: 3rem; 
+}
+.hero_nav_list li:first-child {
+  position: absolute;
+  /* ИЗМЕНЕНО: ставим 0, чтобы убрать зазор слева */
+  left: 0; 
 }
 
 .hero_header_text_1 {color: var(--header-accent-1);}
 .hero_header_text_2 {color: var(--header-accent-2);}
 
 .hero_nav_link_normal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: clamp(1rem, 5vw, 1.5rem);
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
     opacity: 0.85;
@@ -74,11 +85,16 @@ ul {
     padding-bottom: 0.5rem;
     border-bottom: solid 4px #fee2ad;
     border-radius: 2px;
+    text-align: center;
     animation: slideIn forwards 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .hero_nav_list li:nth-child(2) {
-    margin-left: auto; 
+  margin-left: 0; 
+}
+.hero_nav_list li:last-child {
+  position: absolute;
+  right: 1.5rem;
 }
 
 .hero_nav_list li a:hover {
@@ -87,20 +103,22 @@ ul {
 
 .hero_nav_logo {
     display: flex;
+    justify-content: flex-start;
     font-size: clamp(1rem, 5vw, 2rem);
     color: var(--header-accent-1)
 }
 .hero_nav_logo_text_2 {color: #fee2ad;}
 
 .hero_nav_contact_btn {
-    background-color: #fbd896;
-    border-radius: 10px;
-    padding: 0.8rem;
-    margin-left: auto;
-    font-size: clamp(1rem, 5vw, 1.5rem);
-    color: var(--header-accent-1);
-    opacity: 0.95;
-    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  background-color: #fbd896;
+  border-radius: 10px;
+  padding: 0.8rem;
+  margin-left: 0; /* Изменено с auto на 0 */
+  font-size: clamp(1rem, 5vw, 1.5rem);
+  color: var(--header-accent-1);
+  opacity: 0.95;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  display: inline-block; /* Добавлено для корректного ховера */
 }
 .hero_nav_contact_btn:hover {
     opacity: 1;
