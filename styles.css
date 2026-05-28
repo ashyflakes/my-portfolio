@@ -70,9 +70,6 @@ ul {
   left: 0; 
 }
 
-.hero_header_text_1 {color: var(--header-accent-1);}
-.hero_header_text_2 {color: var(--header-accent-2);}
-
 .hero_nav_link_normal {
     display: flex;
     justify-content: center;
@@ -105,9 +102,12 @@ ul {
     display: flex;
     justify-content: flex-start;
     font-size: clamp(1rem, 5vw, 2rem);
-    color: var(--header-accent-1)
+    color: var(--header-accent-1);
+    animation: slideIn forwards 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.hero_nav_logo_text_2 {color: #fee2ad;}
+
+.hero_nav_logo_text_1 {color: var(--header-accent-1);}
+.hero_nav_logo_text_2 {color: var(--header-accent-2);}
 
 .hero_nav_contact_btn {
   background-color: #fbd896;
@@ -119,10 +119,12 @@ ul {
   opacity: 0.95;
   transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
   display: inline-block; /* Добавлено для корректного ховера */
+  animation: slideIn forwards 1.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+
 .hero_nav_contact_btn:hover {
     opacity: 1;
-    transform: translateY(-20px);
+    transform: translateY(-2px);
 }
 
 .hero_header {
@@ -140,8 +142,10 @@ ul {
 }
 
 
-.hero_nav_logo_text_1 {color: var(--header-accent-1);}
 
+
+.hero_header_text_1 {color: var(--header-accent-1);}
+.hero_header_text_2 {color: var(--header-accent-2);}
 
 .hero_header_info {
     font-size: clamp(1rem, 5vw, 2rem);
@@ -154,6 +158,7 @@ ul {
     opacity: 0;
     animation: fadeUp forwards 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
 @keyframes fadeUp {
     from {
         transform: translateY(-50px);
@@ -164,6 +169,7 @@ ul {
         opacity: 1;
     }
 }
+
 @keyframes slideIn {
     from {
         transform: translateY(-100px);
@@ -176,23 +182,37 @@ ul {
 }
 
 @media (max-width: 768px) {
-    * {
-        padding: 0;
-    }
     body {
         text-align: center;
+    }
+    .hero_nav {
+        padding: 1rem;
+        font-size: clamp(0.5rem, 2vw, 0.75rem);
+    }
+    .hero_nav_list {
+        gap: 1rem;
+    }
+    .hero_nav_list li:nth-child(2) {
+        margin-left: 5rem; 
+    }
+    .hero_nav_contact_btn {
+        padding: 0.2rem;
+        margin-top: 10rem;
     }
     .hero_header {
         display: flex;
         justify-content: center;
         text-align: center;
         font-size: clamp(2rem, 15vw, 10rem);
-        padding-inline: 4rem;
+        padding-inline: 0;
+        margin-inline: 0;
         letter-spacing: 0;
     }
+
     .hero_header_info {
         display: flex;
         justify-content: center;
         text-align: center;
+        padding-inline: 0;
     }
 }
