@@ -5,89 +5,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="ashyflakes">
-    <meta name="description" content="an awfully made webpage">
+    <meta name="description" content="Portfolio of ashyflakes - junior front-end developer">
+    
     <!-- links -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="image.png">
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- js scripts -->
     <script src="https://kit.fontawesome.com/96c480faa3.js" crossorigin="anonymous"></script>
-    <title>ashyflakes.portfolio</title>
+    <script src="index.js" defer></script>
+    <title>ashyflakes | Portfolio</title>
 </head>
 <body>
-    <!-- hero section -->
+    <!-- misc/debug -->
+    <noscript>
+        For full functionality of this site it's necessary to enable JavaScript. Here are the 
+        <a href="https://www.enable-javascript.com/" class="noscript_help_link" target="_blank" rel="noopener">
+            instructions how to enable JavaScript in your web browser
+        </a>.
+    </noscript>
+
+    <!-- hero/header & navbar -->
     <header class="hero_main">
-        <div class="hero_nav_container">
-            <nav class="hero_nav">
-                <ul class="hero_nav_list">
-                    <li>
-                        <a href="#" class="hero_nav_logo">
-                            <span class="hero_nav_logo_text_1">ashy</span><span class="hero_nav_logo_text_2">flakes</span>
-                        </a>
-                    </li>
-
-                    <li><a href="#" class="hero_nav_link_normal">about me</a></li>
-                    <li><a href="#" class="hero_nav_link_normal">projects</a></li>
-                    <li><a href="#" class="hero_nav_link_normal">misc</a></li>
-
-                    <li><a href="#" class="hero_nav_contact_btn">contact me</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="hero_header_container">
+        <!-- navigation bar -->
+        <nav class="hero_nav">
+            <a href="#" class="hero_nav_logo">
+                <span class="hero_nav_logo_text_1">ashy</span><span class="hero_nav_logo_text_2">flakes</span>
+            </a>
+            <ul class="hero_nav_list">
+                <li><a href="#" class="hero_nav_link_normal">about me</a></li>
+                <li><a href="#" class="hero_nav_link_normal">projects</a></li>
+                <li><a href="#" class="hero_nav_link_normal">misc</a></li>
+            </ul>
+            <a href="#" class="hero_nav_contact_btn">contact me</a>
+        </nav>
+        
+        <!-- hero/header -->
+        <hgroup>
             <h1 class="hero_header">
                 <span class="hero_header_text_1">ashy</span><span class="hero_header_text_2">flakes</span>
             </h1>
-            <p class="hero_header_info">
-                front-end dev <br>
-                is somewhat trash at Javascript
-            </p>
-        </div>
+            <p class="hero_additional_info">junior front-end dev</p>
+        </hgroup>
+        <p class="hero_header_info">
+            i'm still learning things
+        </p>
+        <p class="hero_header_info two">
+            and improving my JavaScript skills every day.
+        </p>
     </header>
-    <!-- main section -->
+
+    <!-- main part of the website -->
     <main>
+        <!-- about me -->
         <section class="main_about_me_section">
-            <h2 class="main_about_me_header">
+            <!--<h2 class="main_about_me_header">
                 <span class="main_about_me_header_text1">about</span><span class="main_about_me_header_text2">me</span>
             </h2>
-            <p class="main_about_me_desc">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
-                Deserunt unde quo, obcaecati voluptatum optio eligendi?<br>
-                Molestias nemo autem id recusandae.<br>
-            </p>
+            <div class="main_about_me_desc">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>Deserunt unde quo, obcaecati voluptatum optio eligendi?</p>
+                <p>Molestias nemo autem id recusandae.</p>
+            </div> -->
         </section>
-        <section class="main_projects_section">
 
+        <!-- projects -->
+        <section class="main_projects_section" aria-label="Projects">
+            <!-- W.I.P.-->
         </section>
-        <section class="main_misc_section">
 
-        </section>
-        <section class="main_contacts_section">
-
+        <!-- misc -->
+        <section class="main_misc_section" aria-label="Miscellaneous">
+            <!-- W.I.P.-->
         </section>
     </main>
-    <!-- footer section --> 
+
+    <!-- the footer -->
     <footer class="footer_main">
-        <section class="footer_contacts">
-            <a href="https://www.youtube.com/@ashyflakes" class="footer_youtube" target="_self">
-                <i class="fa-brands fa-youtube"></i>
-            </a>
-            <a href="https://discord.com/channels/1267880427670999151/1267880428258463874" class="footer_discord" target="_self">
-                <i class="fa-brands fa-discord"></i>
-            </a>
-            <a href="https://github.com/ashyflakes" class="footer_github" target="_self">
-                <i class="fa-brands fa-github"></i>
-            </a>
-        </section>
-        <section class="footer_description">
-            <p class="footer_description_text">
-                ashyflakes <br>
-                <hr>
-                alexandr.cherkaschenko@gmail.com
-            </p>
-        </section>
-    </footer>    
-    <script src="index.js"></script>
+        <!-- contact information -->
+        <address class="footer_contacts">
+            <div class="footer_socials">
+                <a href="https://www.youtube.com/@ashyflakes" class="footer_youtube" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://discord.com/channels/1267880427670999151/1267880428258463874" class="footer_discord" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+                    <i class="fa-brands fa-discord"></i>
+                </a>
+                <a href="https://github.com/ashyflakes" class="footer_github" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+            <div class="footer_description">
+                <p class="footer_name">ashyflakes</p>
+                <a class="footer_mail" href="mailto:alexandr.cherkaschenko@gmail.com">alexandr.cherkaschenko@gmail.com</a>
+            </div>
+        </address>
+    </footer>
 </body>
 </html>
