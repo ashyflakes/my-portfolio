@@ -1,287 +1,518 @@
+
+/* =========================================================
+   RESET & BASE STYLES / СБРОС И БАЗОВЫЕ СТИЛИ
+========================================================= */
+
 *,
-*::after,
-*::before {
+*::before,
+*::after {
+
+    /* remove default browser spacing / убрать стандартные отступы браузера */
     margin: 0;
     padding: 0;
+
+    /* easier sizing calculations / упрощает расчёты размеров */
     box-sizing: border-box;
 }
 
+/* =========================================================
+   ROOT VARIABLES / КОРНЕВЫЕ ПЕРЕМЕННЫЕ
+========================================================= */
+
 :root {
+
+    /* background colors / цвета фона */
     --bg: #0f0f0e;
-    --ui-bg: #1a1a18;
-    --text: #d4d4d4;
-    --header-accent-1: #ffffff;
+    --nav-bg: #1d1d1b;
+    --footer-bg: #151515;
+
+    /* borders / границы */
+    --nav-border: #2a2a28;
+    --nav-link-border: #fee2ad;
+
+    /* shadows / тени */
+    --box-shadow: #0f0f0e;
+
+    /* buttons / кнопки */
+    --btn-outline: #a98033;
+    --btn-bg: #eac98c;
+
+    /* text colors / цвета текста */
+    --text-heavily-muted: #8a8a8a;
+    --text-muted: #d4d4d4;
+    --text-normal: #ffffff;
+
+    /* hero/header accent colors / акцентные цвета заголовка */
+    --header-accent-1: #edf7fd;
     --header-accent-2: #fee2ad;
 }
 
+/* =========================================================
+   GLOBAL SETTINGS / ГЛОБАЛЬНЫЕ НАСТРОЙКИ
+========================================================= */
 
 html {
+
+    /* smooth anchor scrolling / плавный скролл по якорям */
     scroll-behavior: smooth;
 }
 
 body {
+
+    /* prevents accidental horizontal scrolling / предотвращает случайный горизонтальный скролл */
+    overflow-x: hidden;
+
     min-height: 100vh;
+
     display: flex;
     flex-direction: column;
+
     font-family: "Mulish", sans-serif;
     font-weight: 500;
-    color: var(--text);
+    font-style: normal;
+
+    color: var(--text-muted);
     background-color: var(--bg);
+
     transition: all 0.2s ease;
 }
+
 noscript {
+
+    /* spacing for JS warning text / отступы для предупреждения об отключённом JS */
+    margin-inline: clamp(1rem, 5vw + 1rem, 5rem);
+    margin-block: clamp(1rem, 10vw + 1.2rem, 10rem);
+
     font-family: "Space Grotesk", sans-serif;
     font-weight: 600;
+
     font-size: clamp(1rem, 1vw + 1rem, 2rem);
+
     color: var(--header-accent-2);
 }
+
 a {
+
+    /* removes default link styling / убирает стандартные стили ссылок */
     text-decoration: none;
+
+    color: currentColor;
+
+    /* improves rendering performance for future changes / помогает браузеру оптимизировать будущие изменения */
+    will-change: contents;
 }
 
-ul {
+ul,
+ol {
+
+    /* removes default list bullets/numbers / убирает стандартные маркеры и номера списков */
     list-style: none;
 }
 
-.hero_main {
-    height: 100vh;
-}
+/* =========================================================
+   NAVIGATION BAR / НАВИГАЦИОННАЯ ПАНЕЛЬ
+========================================================= */
 
 .hero_nav {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* keeps navbar visible during scrolling / удерживает навбар видимым при скролле */
     position: fixed;
+
     top: 0;
     left: 0;
-    width: 100%;
+
     z-index: 1000;
+
+    width: 100%;
+
     padding: 1.5rem 2rem;
-    background-color: #1d1d1b;
-    border-bottom: solid 5px #2a2a28;
+
+    background-color: var(--nav-bg);
+
+    border-bottom: solid 5px var(--nav-border);
+
     transition: all 0.2s ease;
+
+    /* entrance animation / анимация появления */
     animation: slideIn forwards 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    display: flex;
-    justify-content: space-between; /* Логотип влево, кнопка вправо */
-    align-items: center; /* Центрирование по вертикали */
 }
 
 .hero_nav_list {
+
     position: relative;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 1200px;
-    margin: 0;
-    padding: 0;
+
+    max-width: 100%;
+
     gap: 3rem;
 }
 
-
 .hero_nav_link_normal {
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     font-size: clamp(1rem, 0.5vw + 0.9rem, 2rem);
-    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-    opacity: 1;
-    text-decoration: none;
-    color: var(--text);
-    border-bottom: solid 0.3rem #fee2ad;
+
+    color: var(--text-muted);
+
+    border-bottom: solid 0.3rem var(--nav-link-border);
     border-radius: 0.2rem;
-    padding-bottom: 1rem;
-    will-change: contents;
+
+    padding-bottom: clamp(1rem, 2vw + 0.5rem, 1.1rem);
+
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+
 .hero_nav_link_normal:hover {
-    color: var(--header-accent-1);
+
+    color: var(--text-normal);
 }
 
 .hero_nav_logo {
+
     display: flex;
-    justify-content: flex-start;
+    align-items: flex-start;
+
     font-size: clamp(1.25rem, 1.5vw + 1rem, 1.85rem);
+
     transition: all 0.2s ease;
-    color: var(--header-accent-1);
-    will-change: contents;
 }
 
-.hero_nav_logo_text_1 {color: var(--header-accent-1);}
-.hero_nav_logo_text_2 {color: var(--header-accent-2);}
+/* logo text split colors / разделение цветов текста логотипа */
+.hero_nav_logo_text_1 {
+
+    color: var(--header-accent-1);
+}
+
+.hero_nav_logo_text_2 {
+
+    color: var(--header-accent-2);
+}
 
 .hero_nav_contact_btn {
-  display: flex;
-  background-color: #eac98c;
-  border-radius: 10px;
-  padding: 0.8rem; /* Изменено с auto на 0 */
-  font-size: clamp(0.95rem, 0.5vw + 0.9rem, 1.3rem);
-  color: var(--header-accent-1);
-  opacity: 0.95;
-  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-  will-change: contents;
-  letter-spacing: 0.05rem;
-  outline-style: solid;
-  outline-width: 0.15rem;
-  outline-color: #a98033;
-  box-shadow: 6px 6px 5px #0f0f0e;
+
+    display: flex;
+    align-items: flex-end;
+
+    background-color: var(--btn-bg);
+
+    border-radius: 6px;
+
+    padding: clamp(0.5rem, 1vw + 0.5rem, 0.8rem);
+
+    font-size: clamp(0.95rem, 0.5vw + 0.9rem, 1.3rem);
+
+    letter-spacing: 0.05rem;
+
+    color: var(--text-normal);
+
+    opacity: 0.95;
+
+    outline-style: solid;
+    outline-width: 0.16rem;
+    outline-color: var(--btn-outline);
+
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
+/* shared hover scaling / общее увеличение при наведении */
 .hero_nav_link_normal:hover,
 .hero_nav_logo:hover,
 .hero_nav_contact_btn:hover {
+
     transform: scale(1.05);
+}
+
+/* =========================================================
+   HERO / HEADER SECTION / ГЛАВНАЯ СЕКЦИЯ И ЗАГОЛОВОК
+========================================================= */
+
+.hero_main {
+
+    /* safer viewport height for mobile browsers / более безопасная высота viewport для мобильных браузеров */
+    height: 100svh;
 }
 
 .hero_header {
+
     display: flex;
     align-items: center;
-    opacity: 0;
+
     font-size: clamp(5rem, 15vw + 5rem, 12.5rem);
+
     font-weight: 700;
     font-style: normal;
-    margin-left: clamp(2rem, 11vw + 1rem, 5rem);;
-    margin-top: clamp(6rem, 20vh + 5rem, 17rem);
-    margin-bottom: 0;
-    user-select: none;
+
     letter-spacing: 0.5rem;
+
+    /* adaptive spacing / адаптивные отступы */
+    margin-left: clamp(2rem, 11vw + 1rem, 5rem);
+    margin-top: clamp(6rem, 20vh + 5rem, 17rem);
+
+    user-select: none;
+
+    opacity: 0;
+
     animation: fadeUp forwards 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.hero_header_text_1 {color: var(--header-accent-1);}
-.hero_header_text_2 {color: var(--header-accent-2);}
+.hero_header_text_1 {
+
+    color: var(--header-accent-1);
+}
+
+.hero_header_text_2 {
+
+    color: var(--header-accent-2);
+}
 
 .hero_additional_info {
-    opacity: 0;
-    user-select: none;
+
     margin-left: clamp(2rem, 11vw + 1rem, 5rem);
-    margin-top: 0;
-    font-weight: 600;
+
+    color: var(--text-heavily-muted);
+
     font-size: clamp(1.1rem, 1.5vw + 1rem, 1.5rem);
-    color: #8a8a8a;
+
     font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+
+    user-select: none;
+
+    opacity: 0;
+
     animation: fadeUp forwards 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-
 .hero_header_info {
+
     font-size: clamp(1.2rem, 2vw + 1rem, 2.2rem);
+
     font-weight: 600;
-    font-style: normal;
+
     font-family: "Space Grotesk", sans-serif;
+
+    letter-spacing: -0.05rem;
+
     margin-left: clamp(1rem, 5vw + 1rem, 5rem);
     margin-top: clamp(1rem, 5vw + 1rem, 5rem);
-    letter-spacing: -0.05rem;
-    opacity: 0;
+
     user-select: none;
+
+    opacity: 0;
+
     animation: fadeUp forwards 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.two {
+
+/* second hero paragraph alignment / выравнивание второго параграфа */
+.hhi2 {
+
     margin-top: auto;
 }
+
+/* =========================================================
+   FOOTER / ФУТЕР
+========================================================= */
+
 .footer_main {
-  flex: 0 0 auto; 
-  background-color: var(--ui-bg);
-  border-top: solid 5px #2a2a28;
-  color: var(--header-accent-1);
-  padding: 2rem 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-  gap: 1.5rem; 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+    flex: 0 0 auto;
+
+    background-color: var(--footer-bg);
+
+    color: var(--text-normal);
+
+    border-top: solid 5px #2a2a28;
+
+    padding: clamp(1rem, 5vw + 1rem, 2rem) 1rem;
+
+    gap: clamp(1rem, 2vw + 0.5rem, 1.5rem);
 }
+
 .footer_contacts {
-  display: flex;
-  gap: 2rem; 
+
+    display: flex;
+
+    gap: 2rem;
 }
+
 .footer_contacts a {
+
     display: flex;
-    color: var(--header-accent-1);
-    font-size: clamp(1rem, 5vw, 2.5rem); 
+    justify-content: center;
+    align-items: center;
+
+    color: var(--text-normal);
+
+    font-size: clamp(1rem, 5vw, 2.5rem);
+
     transition: all 0.3s ease;
-    will-change: contents;
 }
+
 .footer_socials {
+
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
     gap: 0.5rem;
 }
+
+/* subtle hover feedback / лёгкий hover-эффект */
 .footer_contacts a:hover {
-    transform: scale(1.05);
+
+    transform: scale(1.02);
 }
+
 .footer_name {
+
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+
+    color: var(--text-heavily-muted);
+
     user-select: none;
 }
+
 .footer_description {
+
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+
     gap: 2rem;
+
     max-width: 100%;
+
     font-size: clamp(1rem, 5vw, 1.45rem);
-    color: var(--text);
+
+    color: var(--text-normal);
 }
+
 .footer_mail {
+
     display: flex;
-    transition: all 0.2s ease;
+    justify-content: center;
+    align-items: center;
+
     color: var(--header-accent-1);
-    will-change: contents;
+
+    transition: all 0.2s ease-out;
 }
+
 .footer_mail:hover {
-    transform: scale(1.05);
+
+    /* very subtle hover scaling / очень слабое увеличение при наведении */
+    transform: scale(1.001);
 }
+
+/* =========================================================
+   ANIMATIONS / АНИМАЦИИ
+========================================================= */
+
+/* smooth fade-in from top / плавное появление сверху */
 @keyframes fadeUp {
+
     from {
         transform: translateY(-50px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
     }
 }
 
+/* navbar slide-down animation / анимация выезда навбара */
 @keyframes slideIn {
+
     from {
         transform: translateY(-100px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0px);
         opacity: 1;
     }
 }
+
+/* =========================================================
+   RESPONSIVE LAYOUT / АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ УСТРОЙСТВА
+========================================================= */
+
 @media (max-width: 768px) {
 
     body {
+
+        /* centers plain text on smaller screens / центрирует обычный текст на маленьких экранах */
         text-align: center;
     }
 
     .hero_nav {
-        padding: 1rem;
+
+        /* smaller navbar spacing for tablets/mobile / уменьшенные отступы навбара для планшетов и телефонов */
+        padding: clamp(1rem, 2vw + 0.5rem, 1.4rem);
+
         font-size: clamp(0.5rem, 2vw, 0.75rem);
     }
 
-
     .hero_nav_contact_btn {
-        padding: 0.2rem;
+
+        /* smaller button padding on mobile / уменьшенные отступы кнопки на мобильных */
+        padding: clamp(0.2rem, 1vw + 0.5rem, 0.8rem);
     }
 
     .hero_header {
+
         display: flex;
         justify-content: center;
-        text-align: center;
-        font-size: clamp(2rem, 15vw, 10rem);
+        align-items: center;
+
+        /* responsive hero text scaling / адаптивное изменение размера заголовка */
+        font-size: clamp(2rem, 10vw + 1rem, 10rem);
+
+        /* removes desktop spacing / убирает desktop-отступы */
         padding-inline: 0;
-        margin-inline: 0;
+        margin-inline: auto;
+
         letter-spacing: 0;
     }
 
-    .hero_header_info {
+    .hero_additional_info {
+
         display: flex;
         justify-content: center;
-        text-align: center;
-        padding-inline: 0;
+        align-items: center;
+
+        margin-inline: auto;
     }
-    
+
+    .hero_header_info {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+
+        margin-inline: auto;
+    }
 }
+
