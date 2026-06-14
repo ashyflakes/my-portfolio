@@ -22,12 +22,12 @@
 :root {
 
     /* background colors / цвета фона */
-    --bg: #0f0f0e;
-    --nav-bg: #1d1d1b;
-    --footer-bg: #151515;
+    --bg: #120e09;
+    --nav-bg: #1d1a16;
+    --footer-bg: #1d1a16;
 
     /* borders / границы */
-    --nav-border: #2a2a28;
+    --nav-border: #2b251e;
     --nav-link-border: #fee2ad;
 
     /* shadows / тени */
@@ -38,13 +38,13 @@
     --btn-bg: #eac98c;
 
     /* text colors / цвета текста */
-    --text-heavily-muted: #8a8a8a;
-    --text-muted: #d4d4d4;
-    --text-normal: #ffffff;
+    --text-heavily-muted: #8d857a;
+    --text-muted: #d5cfc5;
+    --text-normal: #eae0d1;
 
     /* hero/header accent colors / акцентные цвета заголовка */
-    --header-accent-1: #edf7fd;
-    --header-accent-2: #fee2ad;
+    --header-accent-1: #fff6e0;
+    --header-accent-2: #d5bd8f;
 }
 
 /* =========================================================
@@ -61,6 +61,8 @@ body {
 
     /* prevents accidental horizontal scrolling / предотвращает случайный горизонтальный скролл */
     overflow-x: hidden;
+   
+    position: relative;
 
     min-height: 100vh;
 
@@ -76,17 +78,16 @@ body {
 
     transition: all 0.2s ease;
 }
-
 noscript {
 
     /* spacing for JS warning text / отступы для предупреждения об отключённом JS */
-    margin-inline: clamp(1rem, 5vw + 1rem, 5rem);
-    margin-block: clamp(1rem, 10vw + 1.2rem, 10rem);
+    margin-inline: clamp(1rem, 5svw + 1rem, 5rem);
+    margin-block: clamp(1rem, 10svw + 1.2rem, 10rem);
 
     font-family: "Space Grotesk", sans-serif;
     font-weight: 600;
 
-    font-size: clamp(1rem, 1vw + 1rem, 2rem);
+    font-size: clamp(1rem, 1svw + 1rem, 2rem);
 
     color: var(--header-accent-2);
 }
@@ -95,6 +96,8 @@ a {
 
     /* removes default link styling / убирает стандартные стили ссылок */
     text-decoration: none;
+
+    cursor: pointer;
 
     color: currentColor;
 
@@ -107,6 +110,12 @@ ol {
 
     /* removes default list bullets/numbers / убирает стандартные маркеры и номера списков */
     list-style: none;
+}
+abbr {
+    text-decoration: none;
+}
+abbr:hover {
+    text-decoration: underline;
 }
 
 /* =========================================================
@@ -129,7 +138,7 @@ ol {
 
     width: 100%;
 
-    padding: 1.5rem 2rem;
+    padding: clamp(1rem, 1.5vw + 0.5rem, 1.5rem) 2rem;
 
     background-color: var(--nav-bg);
 
@@ -151,7 +160,7 @@ ol {
 
     max-width: 100%;
 
-    gap: 3rem;
+    gap: 10rem;
 }
 
 .hero_nav_link_normal {
@@ -167,14 +176,14 @@ ol {
     border-bottom: solid 0.3rem var(--nav-link-border);
     border-radius: 0.2rem;
 
-    padding-bottom: clamp(1rem, 2vw + 0.5rem, 1.1rem);
+    padding-bottom: clamp(0.25rem, 1vw, 0.5rem);
 
-    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .hero_nav_link_normal:hover {
-
     color: var(--text-normal);
+    padding-bottom: clamp(1rem, 2vw + 0.5rem, 1.1rem);
 }
 
 .hero_nav_logo {
@@ -184,12 +193,16 @@ ol {
 
     font-size: clamp(1.25rem, 1.5vw + 1rem, 1.85rem);
 
+    padding-bottom: clamp(0.25rem, 1vw, 0.5rem);
+
+    border-bottom: solid 0.3rem var(--nav-link-border);
+    border-radius: 0.2rem;
+
     transition: all 0.2s ease;
 }
 
 /* logo text split colors / разделение цветов текста логотипа */
 .hero_nav_logo_text_1 {
-
     color: var(--header-accent-1);
 }
 
@@ -197,14 +210,18 @@ ol {
 
     color: var(--header-accent-2);
 }
+.hero_nav_logo:hover {
+    padding-bottom: clamp(0.5rem, 1.5vw + 0.5rem, 0.9rem);
+}
 
 .hero_nav_contact_btn {
 
     display: flex;
     align-items: flex-end;
 
-    background-color: var(--btn-bg);
+    background-color: var(--nav-border);
 
+    border: solid 5px var(--nav-link-border);
     border-radius: 6px;
 
     padding: clamp(0.5rem, 1vw + 0.5rem, 0.8rem);
@@ -213,22 +230,22 @@ ol {
 
     letter-spacing: 0.05rem;
 
-    color: var(--text-normal);
+    color: var(--header-accent-1);
 
     opacity: 0.95;
 
-    outline-style: solid;
-    outline-width: 0.16rem;
-    outline-color: var(--btn-outline);
 
     transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.hero_nav_contact_btn:hover {
+    border-radius: 10px;
 }
 
 /* shared hover scaling / общее увеличение при наведении */
 .hero_nav_link_normal:hover,
 .hero_nav_logo:hover,
 .hero_nav_contact_btn:hover {
-
     transform: scale(1.05);
 }
 
@@ -236,13 +253,13 @@ ol {
    HERO / HEADER SECTION / ГЛАВНАЯ СЕКЦИЯ И ЗАГОЛОВОК
 ========================================================= */
 
-.hero_main {
+.hero {
 
     /* safer viewport height for mobile browsers / более безопасная высота viewport для мобильных браузеров */
     height: 100svh;
 }
 
-.hero_header {
+.hgroup_header {
 
     display: flex;
     align-items: center;
@@ -275,7 +292,7 @@ ol {
     color: var(--header-accent-2);
 }
 
-.hero_additional_info {
+.hgroup_info {
 
     margin-left: clamp(2rem, 11vw + 1rem, 5rem);
 
@@ -293,13 +310,13 @@ ol {
     animation: fadeUp forwards 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.hero_header_info {
+.hero_info {
 
     font-size: clamp(1.2rem, 2vw + 1rem, 2.2rem);
-
     font-weight: 600;
-
     font-family: "Space Grotesk", sans-serif;
+
+    color: var(--text-normal);
 
     letter-spacing: -0.05rem;
 
@@ -314,7 +331,7 @@ ol {
 }
 
 /* second hero paragraph alignment / выравнивание второго параграфа */
-.hhi2 {
+.hi2 {
 
     margin-top: auto;
 }
@@ -323,7 +340,7 @@ ol {
    FOOTER / ФУТЕР
 ========================================================= */
 
-.footer_main {
+.footer {
 
     display: flex;
     justify-content: center;
@@ -332,11 +349,14 @@ ol {
     flex-direction: column;
     flex: 0 0 auto;
 
+    position: relative;
+    bottom: 0;
+
     background-color: var(--footer-bg);
 
     color: var(--text-normal);
 
-    border-top: solid 5px #2a2a28;
+    border-top: solid 5px var(--nav-border);
 
     padding: clamp(1rem, 5vw + 1rem, 2rem) 1rem;
 
@@ -419,6 +439,7 @@ ol {
 
     /* very subtle hover scaling / очень слабое увеличение при наведении */
     transform: scale(1.001);
+    cursor: pointer;
 }
 
 /* =========================================================
