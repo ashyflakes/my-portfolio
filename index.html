@@ -11,25 +11,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="image.png">
+    <link rel="icon" type="image/png" href="image (1).webp">
     <link rel="stylesheet" href="styles.css">
     
     <!-- js scripts -->
     <script src="https://kit.fontawesome.com/96c480faa3.js" crossorigin="anonymous"></script>
     <script src="index.js" defer></script>
-    <title>ashyflakes | Portfolio</title>
+    <title>ashyflakes &rAarr; portfolio</title>
 </head>
 <body>
     <!-- misc/debug -->
     <noscript>
-        For full functionality of this site it's necessary to enable JavaScript. Here are the 
-        <a href="https://www.enable-javascript.com/" class="noscript_help_link" target="_blank" rel="noopener">
-            instructions how to enable JavaScript in your web browser
-        </a>.
+        <p>For full functionality of this site it's necessary to enable JavaScript. Here are the 
+            <a href="https://www.enable-javascript.com/" class="noscript_help_link" target="_blank" rel="noopener">
+                instructions how to enable JavaScript in your web browser.
+            </a>
+        </p>
     </noscript>
 
     <!-- hero/header & navbar -->
-    <header class="hero_main">
+    <header class="hero">
         <!-- navigation bar -->
         <nav class="hero_nav">
             <a href="#" class="hero_nav_logo">
@@ -38,30 +39,31 @@
             <ul class="hero_nav_list">
                 <li><a href="#" class="hero_nav_link_normal">about me</a></li>
                 <li><a href="#" class="hero_nav_link_normal">projects</a></li>
-                <li><a href="#" class="hero_nav_link_normal">misc</a></li>
+                <li><a href="#" class="hero_nav_link_normal">miscellaneous</a></li>
             </ul>
             <a href="#" class="hero_nav_contact_btn">contact me</a>
         </nav>
         
         <!-- hero/header -->
-        <hgroup>
-            <h1 class="hero_header">
+        <hgroup class="hero_hgroup">
+            <h1 class="hgroup_header">
                 <span class="hero_header_text_1">ashy</span><span class="hero_header_text_2">flakes</span>
             </h1>
-            <p class="hero_additional_info">junior front-end dev</p>
+            <p class="hgroup_info">junior front-end dev</p>
         </hgroup>
-        <p class="hero_header_info hhi1">
+        <p class="hero_info hi1">
             still learning things
         </p>
-        <p class="hero_header_info hhi2">
-            and improving my JavaScript skills
+        <p class="hero_info hi2">
+            and improving my <abbr title="Javascript">JS</abbr> skills (kinda)
         </p>
+        
     </header>
 
     <!-- main part of the website -->
     <main>
         <!-- about me -->
-        <section class="main_about_me_section">
+        <section class="main_aboutme main_sections" aria-label="About me">
             <!--<h2 class="main_about_me_header">
                 <span class="main_about_me_header_text1">about</span><span class="main_about_me_header_text2">me</span>
             </h2>
@@ -73,18 +75,23 @@
         </section>
 
         <!-- projects -->
-        <section class="main_projects_section" aria-label="Projects">
+        <section class="main_projects main_sections" aria-label="Projects">
             <!-- W.I.P.-->
         </section>
 
         <!-- misc -->
-        <section class="main_misc_section" aria-label="Miscellaneous">
+        <section class="main_misc main_sections" aria-label="Miscellaneous">
             <!-- W.I.P.-->
+        </section>
+        
+        <!-- contacts -->
+        <section class="main_contacts main_sections">
+
         </section>
     </main>
 
     <!-- the footer -->
-    <footer class="footer_main">
+    <footer class="footer">
         <!-- contact information -->
         <address class="footer_contacts">
             <div class="footer_socials">
@@ -100,7 +107,7 @@
             </div>
             <div class="footer_description">
                 <p class="footer_name">&copy; ashyflakes</p>
-                <a class="footer_mail" href="mailto:alexandr.cherkaschenko@gmail.com">alexandr.cherkaschenko@gmail.com</a>
+                <a class="footer_mail" href="mailto:alexandr.cherkaschenko@gmail.com" rel="noopener">alexandr.cherkaschenko@gmail.com</a>
             </div>
         </address>
     </footer>
