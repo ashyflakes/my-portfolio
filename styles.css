@@ -1,134 +1,165 @@
-
 /* =========================================================
-   RESET & BASE STYLES / СБРОС И БАЗОВЫЕ СТИЛИ
+   RESET
 ========================================================= */
 
 *,
 *::before,
 *::after {
-
-    /* remove default browser spacing / убрать стандартные отступы браузера */
     margin: 0;
     padding: 0;
-
-    /* easier sizing calculations / упрощает расчёты размеров */
     box-sizing: border-box;
 }
 
 /* =========================================================
-   ROOT VARIABLES / КОРНЕВЫЕ ПЕРЕМЕННЫЕ
+   ROOT
 ========================================================= */
 
 :root {
 
-    /* background colors / цвета фона */
     --bg: #120e09;
-    --nav-bg: #1d1a16;
-    --footer-bg: #1d1a16;
+    --bg-secondary: #18130d;
 
-    /* borders / границы */
-    --nav-border: #2b251e;
-    --nav-link-border: #fee2ad;
+    --nav-bg: rgba(25, 22, 18, 0.8);
 
-    /* shadows / тени */
-    --box-shadow: #0f0f0e;
+    --border: #2d261e;
 
-    /* buttons / кнопки */
-    --btn-outline: #a98033;
-    --btn-bg: #eac98c;
+    --text-muted: #b9afa2;
+    --text-normal: #eee4d7;
+    --text-dark-muted: #867d72;
 
-    /* text colors / цвета текста */
-    --text-heavily-muted: #8d857a;
-    --text-muted: #d5cfc5;
-    --text-normal: #eae0d1;
+    --accent-1: #fff2d8;
+    --accent-2: #d5bd8f;
 
-    /* hero/header accent colors / акцентные цвета заголовка */
-    --header-accent-1: #fff6e0;
-    --header-accent-2: #d5bd8f;
+    --surface: #1a1510;
+
+    --soft-gold: #b89d6d;
+    --soft-copper: #9f7155;
+
+    --button-bg: #e6c98f;
+    --button-text: #17120d;
+
+    --shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
+
+    --transition:
+        0.25s cubic-bezier(.2,.8,.2,1);
 }
 
+@font-face {                    /* regular */
+    font-family: "Montserrat";
+    src: url("./fonts/Montserrat-Regular.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {                    /* semibold */
+    font-family: "Montserrat";
+    src: url("./fonts/Montserrat-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {                    /* bold */
+    font-family: "Montserrat";
+    src: url("./fonts/Montserrat-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {                    /* regular */
+    font-family: "Mulish";
+    src: url("./fonts/Mulish-Regular.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {                    /* semibold */
+    font-family: "Mulish";
+    src: url("./fonts/Mulish-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {                    /* bold */
+    font-family: "Mulish";
+    src: url("./fonts/Mulish-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {                    /* regular */
+    font-family: "Space Grotesk";
+    src: url("./fonts/SpaceGrotesk-Regular.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {                    /* semibold */
+    font-family: "Space Grotesk";
+    src: url("./fonts/SpaceGrotesk-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {                    /* bold */
+    font-family: "Space Grotesk";
+    src: url("./fonts/SpaceGrotesk-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
 /* =========================================================
-   GLOBAL SETTINGS / ГЛОБАЛЬНЫЕ НАСТРОЙКИ
+   GLOBAL
 ========================================================= */
 
 html {
-
-    /* smooth anchor scrolling / плавный скролл по якорям */
     scroll-behavior: smooth;
 }
 
 body {
 
-    /* prevents accidental horizontal scrolling / предотвращает случайный горизонтальный скролл */
     overflow-x: hidden;
-   
-    position: relative;
 
     min-height: 100vh;
 
-    display: flex;
-    flex-direction: column;
-
     font-family: "Mulish", sans-serif;
-    font-weight: 500;
-    font-style: normal;
+
+    background:
+        radial-gradient(circle at top left, #22180f 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #1b140d 0%, transparent 30%),
+        var(--bg);
 
     color: var(--text-muted);
-    background-color: var(--bg);
-
-    transition: all 0.2s ease;
-}
-noscript {
-
-    /* spacing for JS warning text / отступы для предупреждения об отключённом JS */
-    margin-inline: clamp(1rem, 5svw + 1rem, 5rem);
-    margin-block: clamp(1rem, 10svw + 1.2rem, 10rem);
-
-    font-family: "Space Grotesk", sans-serif;
-    font-weight: 600;
-
-    font-size: clamp(1rem, 1svw + 1rem, 2rem);
-
-    color: var(--header-accent-2);
 }
 
 a {
-
-    /* removes default link styling / убирает стандартные стили ссылок */
     text-decoration: none;
-
-    cursor: pointer;
-
-    color: currentColor;
-
-    /* improves rendering performance for future changes / помогает браузеру оптимизировать будущие изменения */
-    will-change: contents;
+    color: inherit;
 }
 
 ul,
 ol {
-
-    /* removes default list bullets/numbers / убирает стандартные маркеры и номера списков */
     list-style: none;
 }
+
 abbr {
     text-decoration: none;
+    cursor: help;
 }
+
 abbr:hover {
     text-decoration: underline;
 }
 
+noscript {
+
+    display: flex;
+    justify-content: center;
+
+    padding: 2rem;
+
+    color: var(--accent-2);
+}
+
 /* =========================================================
-   NAVIGATION BAR / НАВИГАЦИОННАЯ ПАНЕЛЬ
+   NAVBAR
 ========================================================= */
 
 .hero_nav {
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    /* keeps navbar visible during scrolling / удерживает навбар видимым при скролле */
     position: fixed;
 
     top: 0;
@@ -138,402 +169,441 @@ abbr:hover {
 
     width: 100%;
 
-    padding: clamp(1rem, 1.5vw + 0.5rem, 1.5rem) 2rem;
-
-    background-color: var(--nav-bg);
-
-    border-bottom: solid 5px var(--nav-border);
-
-    transition: all 0.2s ease;
-
-    /* entrance animation / анимация появления */
-    animation: slideIn forwards 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.hero_nav_list {
-
-    position: relative;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    max-width: 100%;
-
-    gap: 10rem;
-}
-
-.hero_nav_link_normal {
-
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    font-size: clamp(1rem, 0.5vw + 0.9rem, 2rem);
+    padding:
+        1rem
+        clamp(1rem, 5vw, 3rem);
 
-    color: var(--text-muted);
+    backdrop-filter: blur(12px);
 
-    border-bottom: solid 0.3rem var(--nav-link-border);
-    border-radius: 0.2rem;
+    background: var(--nav-bg);
 
-    padding-bottom: clamp(0.25rem, 1vw, 0.5rem);
+    border-bottom:
+        1px solid var(--border);
 
-    transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.hero_nav_link_normal:hover {
-    color: var(--text-normal);
-    padding-bottom: clamp(1rem, 2vw + 0.5rem, 1.1rem);
+    animation:
+        slideIn 0.7s ease forwards;
 }
 
 .hero_nav_logo {
 
-    display: flex;
-    align-items: flex-start;
+    font-size:
+        clamp(1.2rem, 2vw, 1.7rem);
 
-    font-size: clamp(1.25rem, 1.5vw + 1rem, 1.85rem);
+    font-weight: 800;
 
-    padding-bottom: clamp(0.25rem, 1vw, 0.5rem);
-
-    border-bottom: solid 0.3rem var(--nav-link-border);
-    border-radius: 0.2rem;
-
-    transition: all 0.2s ease;
+    transition:
+        transform var(--transition);
 }
 
-/* logo text split colors / разделение цветов текста логотипа */
+.hero_nav_logo:hover {
+    transform: translateY(-2px);
+}
+
 .hero_nav_logo_text_1 {
-    color: var(--header-accent-1);
+    color: var(--accent-1);
 }
 
 .hero_nav_logo_text_2 {
-
-    color: var(--header-accent-2);
+    color: var(--accent-2);
 }
-.hero_nav_logo:hover {
-    padding-bottom: clamp(0.5rem, 1.5vw + 0.5rem, 0.9rem);
+
+.hero_nav_list {
+
+    display: flex;
+    align-items: center;
+
+    gap:
+        clamp(1rem, 4vw, 4rem);
+}
+
+.hero_nav_link_normal {
+
+    position: relative;
+
+    font-size:
+        clamp(0.95rem, 1.5vw + 1rem, 1.3rem);
+
+    transition:
+        color var(--transition);
+}
+
+.hero_nav_link_normal::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -0.35rem;
+
+    width: 0%;
+    height: 2px;
+
+    background: var(--accent-2);
+
+    transition:
+        width var(--transition);
+}
+
+.hero_nav_link_normal:hover {
+    color: var(--text-normal);
+}
+
+.hero_nav_link_normal:hover::after {
+    width: 100%;
 }
 
 .hero_nav_contact_btn {
 
-    display: flex;
-    align-items: flex-end;
+    padding:
+        0.75rem 1rem;
 
-    background-color: var(--nav-border);
+    border-radius: 12px;
 
-    border: solid 5px var(--nav-link-border);
-    border-radius: 6px;
+    background: var(--button-bg);
 
-    padding: clamp(0.5rem, 1vw + 0.5rem, 0.8rem);
+    backdrop-filter: blur(12px);
 
-    font-size: clamp(0.95rem, 0.5vw + 0.9rem, 1.3rem);
+    color: var(--button-text);
 
-    letter-spacing: 0.05rem;
+    font-weight: 700;
 
-    color: var(--header-accent-1);
-
-    opacity: 0.95;
-
-
-    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    transition:
+        transform var(--transition),
+        opacity var(--transition);
 }
 
 .hero_nav_contact_btn:hover {
-    border-radius: 10px;
-}
 
-/* shared hover scaling / общее увеличение при наведении */
-.hero_nav_link_normal:hover,
-.hero_nav_logo:hover,
-.hero_nav_contact_btn:hover {
-    transform: scale(1.05);
+    transform: translateY(-2px);
+
+    opacity: 0.9;
 }
 
 /* =========================================================
-   HERO / HEADER SECTION / ГЛАВНАЯ СЕКЦИЯ И ЗАГОЛОВОК
+   HERO
 ========================================================= */
 
 .hero {
 
-    /* safer viewport height for mobile browsers / более безопасная высота viewport для мобильных браузеров */
-    height: 100svh;
+    position: relative;
+
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+
+    padding:
+        clamp(7rem, 12vw, 10rem)
+        clamp(1.5rem, 6vw, 6rem);
+}
+
+.hero_content {
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 2rem;
+
+    animation:
+        fadeUp 0.8s ease forwards;
 }
 
 .hgroup_header {
 
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
 
-    font-size: clamp(5rem, 15vw + 5rem, 12.5rem);
+    font-size:
+        clamp(4rem, 11vw, 10rem);
 
-    font-weight: 700;
-    font-style: normal;
+    line-height: 0.9;
 
-    letter-spacing: 0.5rem;
-
-    /* adaptive spacing / адаптивные отступы */
-    margin-left: clamp(2rem, 11vw + 1rem, 5rem);
-    margin-top: clamp(6rem, 20vh + 5rem, 17rem);
+    letter-spacing: -0.2rem;
 
     user-select: none;
-
-    opacity: 0;
-
-    animation: fadeUp forwards 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .hero_header_text_1 {
-
-    color: var(--header-accent-1);
+    color: var(--accent-1);
 }
 
 .hero_header_text_2 {
-
-    color: var(--header-accent-2);
+    color: var(--accent-2);
 }
 
 .hgroup_info {
 
-    margin-left: clamp(2rem, 11vw + 1rem, 5rem);
-
-    color: var(--text-heavily-muted);
-
-    font-size: clamp(1.1rem, 1.5vw + 1rem, 1.5rem);
+    margin-top: 1.5rem;
 
     font-family: "Space Grotesk", sans-serif;
-    font-weight: 600;
 
-    user-select: none;
+    font-size:
+        clamp(1rem, 1.5vw, 1.3rem);
 
-    opacity: 0;
+    color: var(--text-dark-muted);
+}
 
-    animation: fadeUp forwards 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.hero_texts {
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 1rem;
 }
 
 .hero_info {
 
-    font-size: clamp(1.2rem, 2vw + 1rem, 2.2rem);
-    font-weight: 600;
     font-family: "Space Grotesk", sans-serif;
 
+    font-size:
+        clamp(1.1rem, 2vw, 1.8rem);
+
     color: var(--text-normal);
-
-    letter-spacing: -0.05rem;
-
-    margin-left: clamp(1rem, 5vw + 1rem, 5rem);
-    margin-top: clamp(1rem, 5vw + 1rem, 5rem);
-
-    user-select: none;
-
-    opacity: 0;
-
-    animation: fadeUp forwards 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* second hero paragraph alignment / выравнивание второго параграфа */
-.hi2 {
-
-    margin-top: auto;
+.secondary {
+    color: var(--text-muted);
 }
 
 /* =========================================================
-   FOOTER / ФУТЕР
+   SECTIONS
+========================================================= */
+
+.main_sections {
+
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+
+    padding:
+        clamp(2rem, 6vw, 6rem);
+}
+
+.section_box {
+
+    width: min(100%, 1100px);
+
+    padding:
+        clamp(2rem, 5vw, 4rem);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--surface),
+            rgba(255,255,255,0.01)
+        );
+
+    backdrop-filter: blur(8px);
+
+    box-shadow: var(--shadow);
+}
+#about, #misc {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+}
+.aboutme_header,
+.section_title {
+
+    font-size:
+        clamp(2.5rem, 7vw, 5rem);
+
+    margin-bottom: 2rem;
+    letter-spacing: -0.2rem;
+
+
+    color: var(--text-normal);
+}
+
+.about_me_header_text2 {
+    color: var(--accent-2);
+}
+
+.aboutme_desc {
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 1rem;
+
+    font-size:
+        clamp(1rem, 1.5vw, 1.4rem);
+
+    line-height: 1.7;
+}
+
+.placeholder_text {
+
+    color: var(--text-dark-muted);
+
+    font-size: 1.2rem;
+}
+
+/* =========================================================
+   FOOTER
 ========================================================= */
 
 .footer {
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding:
+        2rem;
 
-    flex-direction: column;
-    flex: 0 0 auto;
+    border-top:
+        1px solid var(--border);
 
-    position: relative;
-    bottom: 0;
-
-    background-color: var(--footer-bg);
-
-    color: var(--text-normal);
-
-    border-top: solid 5px var(--nav-border);
-
-    padding: clamp(1rem, 5vw + 1rem, 2rem) 1rem;
-
-    gap: clamp(1rem, 2vw + 0.5rem, 1.5rem);
+    background: var(--bg-secondary);
 }
 
 .footer_contacts {
 
     display: flex;
-
-    gap: 2rem;
-}
-
-.footer_contacts a {
-
-    display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
-    color: var(--text-normal);
+    flex-wrap: wrap;
 
-    font-size: clamp(1rem, 5vw, 2.5rem);
-
-    transition: all 0.3s ease;
+    gap: 2rem;
 }
 
 .footer_socials {
 
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 0.5rem;
+    gap: 1rem;
 }
 
-/* subtle hover feedback / лёгкий hover-эффект */
-.footer_contacts a:hover {
+.footer_socials a {
 
-    transform: scale(1.02);
+    font-size: 1.8rem;
+
+    transition:
+        transform var(--transition),
+        color var(--transition);
 }
 
-.footer_name {
+.footer_socials a:hover {
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    transform: translateY(-3px);
 
-    color: var(--text-heavily-muted);
-
-    user-select: none;
+    color: var(--accent-2);
 }
 
 .footer_description {
 
     display: flex;
-    justify-content: center;
     align-items: center;
 
-    gap: 2rem;
+    flex-wrap: wrap;
 
-    max-width: 100%;
+    gap: 1rem;
+}
 
-    font-size: clamp(1rem, 5vw, 1.45rem);
-
-    color: var(--text-normal);
+.footer_name {
+    color: var(--text-dark-muted);
 }
 
 .footer_mail {
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    color: var(--accent-1);
 
-    color: var(--header-accent-1);
-
-    transition: all 0.2s ease-out;
+    transition:
+        opacity var(--transition);
 }
 
 .footer_mail:hover {
-
-    /* very subtle hover scaling / очень слабое увеличение при наведении */
-    transform: scale(1.001);
-    cursor: pointer;
+    opacity: 0.8;
 }
 
 /* =========================================================
-   ANIMATIONS / АНИМАЦИИ
+   ANIMATIONS
 ========================================================= */
 
-/* smooth fade-in from top / плавное появление сверху */
 @keyframes fadeUp {
 
     from {
-        transform: translateY(-50px);
+
         opacity: 0;
+        transform: translateY(40px);
     }
 
     to {
-        transform: translateY(0);
+
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* navbar slide-down animation / анимация выезда навбара */
 @keyframes slideIn {
 
     from {
-        transform: translateY(-100px);
+
         opacity: 0;
+        transform: translateY(-100%);
     }
 
     to {
-        transform: translateY(0px);
+
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
 /* =========================================================
-   RESPONSIVE LAYOUT / АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ УСТРОЙСТВА
+   RESPONSIVE
 ========================================================= */
 
 @media (max-width: 768px) {
 
-    body {
+    .hero_nav {
 
-        /* centers plain text on smaller screens / центрирует обычный текст на маленьких экранах */
+        flex-direction: column;
+
+        gap: 1rem;
+    }
+
+    .hero_nav_list {
+
+        gap: 1.5rem;
+
+        flex-wrap: wrap;
+    }
+
+    .hero {
+
         text-align: center;
     }
 
-    .hero_nav {
+    .hgroup_header {
 
-        /* smaller navbar spacing for tablets/mobile / уменьшенные отступы навбара для планшетов и телефонов */
-        padding: clamp(1rem, 2vw + 0.5rem, 1.4rem);
-
-        font-size: clamp(0.5rem, 2vw, 0.75rem);
-    }
-
-    .hero_nav_contact_btn {
-
-        /* smaller button padding on mobile / уменьшенные отступы кнопки на мобильных */
-        padding: clamp(0.2rem, 1vw + 0.5rem, 0.8rem);
-    }
-
-    .hero_header {
-
-        display: flex;
         justify-content: center;
-        align-items: center;
-
-        /* responsive hero text scaling / адаптивное изменение размера заголовка */
-        font-size: clamp(2rem, 10vw + 1rem, 10rem);
-
-        /* removes desktop spacing / убирает desktop-отступы */
-        padding-inline: 0;
-        margin-inline: auto;
 
         letter-spacing: 0;
     }
 
-    .hero_additional_info {
-
-        display: flex;
-        justify-content: center;
+    .hero_texts {
         align-items: center;
-
-        margin-inline: auto;
     }
 
-    .hero_header_info {
+    .footer_contacts {
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column;
 
         text-align: center;
+    }
 
-        margin-inline: auto;
+    .footer_description {
+
+        flex-direction: column;
     }
 }
-
